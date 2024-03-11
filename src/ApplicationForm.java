@@ -94,7 +94,7 @@ public class ApplicationForm extends JDialog {
     private boolean isAlreadyApplied(String aadhar) {
         final String DB_URL = "jdbc:mysql://localhost:3306/kulaabhooshanam_java";
         final String USERNAME = "root";
-        final String PASSWORD = "Harry@123";
+        final String PASSWORD = "";
 
         try {
             Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
@@ -134,7 +134,7 @@ public class ApplicationForm extends JDialog {
     private void addToAdoptionDB(String aadhar, String sex, int age, String genDisorder) {
         final String DB_URL = "jdbc:mysql://localhost:3306/kulaabhooshanam_java";
         final String USERNAME = "root";
-        final String PASSWORD = "Harry@123";
+        final String PASSWORD = "";
 
         try {
             Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);

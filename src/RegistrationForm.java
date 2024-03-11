@@ -127,7 +127,7 @@ public class RegistrationForm  extends JDialog {
         User user = null;
         final String DB_URL = "jdbc:mysql://localhost:3306/kulaabhooshanam_java";
         final String USERNAME = "root";
-        final String PASSWORD = "Harry@123";
+        final String PASSWORD = "";
 
         try {
             Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
