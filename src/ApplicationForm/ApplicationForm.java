@@ -133,9 +133,9 @@ public class ApplicationForm extends JFrame {
     }
 
     private boolean isAlreadyApplied(String aadhar) {
-        final String url = "jdbc:mysql://localhost:3306/kulaabhooshanam";
+        final String url = "jdbc:mysql://localhost:3306/kulaabhooshanam_java";
         final String user = "root";
-        final String password = "w1o2rk";
+        final String password = "Harry@123";
 
         try {
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -175,7 +175,7 @@ public class ApplicationForm extends JFrame {
     private void addToAdoptionDB(String aadhar, String sex, int age, String genDisorder) {
         final String DB_URL = "jdbc:mysql://localhost:3306/kulaabhooshanam_java";
         final String USERNAME = "root";
-        final String PASSWORD = "";
+        final String PASSWORD = "Harry@123";
 
         try {
             Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);

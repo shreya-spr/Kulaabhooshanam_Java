@@ -69,9 +69,9 @@ public class AddChild extends JDialog {
     private void connectToDatabase() {
         try {
             // Replace below with your MySQL connection details
-            String url = "jdbc:mysql://localhost:3306/kulaabhooshanam";
+            String url = "jdbc:mysql://localhost:3306/kulaabhooshanam_java";
             String user = "root";
-            String password = "w1o2rk";
+            String password = "Harry@123";
 
             connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException ex) {
@@ -90,7 +90,7 @@ public class AddChild extends JDialog {
             }            
             String adoptionStatus = "inhouse";
             Timestamp dateAdmitted = new Timestamp(System.currentTimeMillis());
-            int agencyId = 101;
+            int agencyId = 100;
             int age = Integer.parseInt(ageField.getText());
     
             // Check if the child already exists
@@ -119,6 +119,7 @@ public class AddChild extends JDialog {
             if (rowsInserted > 0) {
                 JOptionPane.showMessageDialog(this, "Child information added successfully!");
                 // Clear input fields after successful insertion
+                ageField.setText("");
                 nameField.setText("");
                 dobField.setText("");
                 geneticDisorderField.setText("");

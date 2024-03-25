@@ -2,7 +2,7 @@ package RegistrationForm;
 
 import javax.swing.*;
 
-import LoginForm.LoginForm;
+// import LoginForm.LoginForm;
 import User.User;
 
 import java.awt.*;
@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+
 public class RegistrationForm  extends JFrame {
     private JTextField tfAadhar = new JTextField();
     private JTextField tfName = new JTextField();
@@ -39,12 +40,12 @@ public class RegistrationForm  extends JFrame {
         // super(parent);
         setTitle("Create a new account here");
         setContentPane(panel);
-        setMinimumSize(new Dimension(450, 600));
+        setMinimumSize(new Dimension(450, 560));
         // setModal(true);
         setLocationRelativeTo(parent);  // centers it to the middle of parent
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        panel.setLayout(new GridLayout(18, 1, 5, 5));
+        panel.setLayout(new GridLayout(20, 2, 5, 5));
 
         JLabel aadharLabel = new JLabel("Aadhar Number");
         panel.add(aadharLabel);
@@ -82,6 +83,10 @@ public class RegistrationForm  extends JFrame {
         panel.add(sexLabel);
         panel.add(tfSex);
 
+        JLabel ageLabel = new JLabel("Enter your age");
+        panel.add(ageLabel);
+        panel.add(tfAge); 
+
         JLabel incomeLabel = new JLabel("Income");
         panel.add(incomeLabel);
         panel.add(tfIncome);
@@ -106,8 +111,8 @@ public class RegistrationForm  extends JFrame {
         panel.add(addressLabel);
         panel.add(tfAddress);
 
-        JLabel incomestatLabel = new JLabel("Income status");
-        panel.add(incomestatLabel);
+        JLabel finstatLabel = new JLabel("Financial status");
+        panel.add(finstatLabel);
         panel.add(tfFinStatus);
 
         JLabel casteLabel = new JLabel("caste");
@@ -172,8 +177,12 @@ public class RegistrationForm  extends JFrame {
 
         // already in the database
         if (user != null) {
+            JOptionPane.showMessageDialog(null, 
+            "Operation completed successfully", 
+            "Success", JOptionPane.INFORMATION_MESSAGE);
+
             dispose();
-            new LoginForm(null, null);
+            //new LoginForm(null, null);
         } else {
             JOptionPane.showMessageDialog(this,
                     "Failed to register new user",
@@ -206,7 +215,7 @@ public class RegistrationForm  extends JFrame {
         User user = null;
         final String DB_URL = "jdbc:mysql://localhost:3306/kulaabhooshanam_java";
         final String USERNAME = "root";
-        final String PASSWORD = "";
+        final String PASSWORD = "Harry@123";
 
         try {
             Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
@@ -273,14 +282,15 @@ public class RegistrationForm  extends JFrame {
 
         return user;
     }
+
+    public static void main(String[] args) {
+        RegistrationForm myForm = new RegistrationForm(null);
+        User user = myForm.user;
+        if (user != null) {
+            System.out.println("Successfully registered! " + user.name);
+        } else {
+            System.out.println("Registration not done !");
+        }
+    }
 }
-//     public static void main(String[] args) {
-//         RegistrationForm myForm = new RegistrationForm(null);
-//         User user = myForm.user;
-//         if (user != null) {
-//             System.out.println("Successfully registered! " + user.name);
-//         } else {
-//             System.out.println("Registration not done !");
-//         }
-//     }
-// }
+    

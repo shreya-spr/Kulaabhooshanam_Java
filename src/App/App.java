@@ -4,9 +4,13 @@ import java.awt.*;
 import java.awt.event.*;
 import ApplicationForm.ApplicationForm;
 import LoginForm.LoginForm;
+import Profile.Profile;
 import RegistrationForm.RegistrationForm;
 import User.User;
 import AddChild.AddChild;
+import Role.Role;
+import Profile.Profile;
+//////// CREATE A NEW BRANCH FOR MY CHANGES TOO - yes? https://chat.openai.com/c/c0400a2c-0bc5-40f3-98af-d46fd3d11ff2
 
 public class App extends JFrame {
 
@@ -112,6 +116,8 @@ public class App extends JFrame {
         applyNowPanel.setOpaque(false);
         applyNowPanel.add(applyNowButton);
 
+        // Role roleDialog = null;
+        Role[] roleDialog = new Role[1];
         loginBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -120,12 +126,28 @@ public class App extends JFrame {
                     loggedInUser = null;
                     updateButtonState();
                 } else {
-                    // Open login form
-                    LoginForm loginForm = new LoginForm(null, App.this);
-                    loginForm.setVisible(true);
+                    
+                    // Open role selection dialog
+                    roleDialog[0] = new Role(new Role.RoleChangeListener() {
+                        @Override
+                        public void onRoleChanged(String role) {
+                            if (role.equals("Parent")) {
+                                // If the role is Parent, open the login form
+                                LoginForm loginForm = new LoginForm(null, App.this);
+                                loginForm.setVisible(true);
+
+                                // close role once login form is displayed
+                                if (roleDialog[0] != null) {
+                                    roleDialog[0].dispose();
+                                }
+                            }
+                        }
+                    });
+                    roleDialog[0].setVisible(true);
                 }
             }
         });
+        
 
         // Give Up Child button
         JButton giveUpChildButton = new JButton("Want to give up a child for adoption?");
@@ -172,6 +194,13 @@ public class App extends JFrame {
 
         // Profile Button
         JButton profileButton = new JButton("Profile");
+        profileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Profile profilePage = new Profile(null);
+                profilePage.setVisible(true);
+            } 
+        });
 
         JPanel giveUpChildPanel = new JPanel();
         giveUpChildPanel.setOpaque(false);

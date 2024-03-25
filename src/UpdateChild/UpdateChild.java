@@ -80,9 +80,9 @@ public class UpdateChild extends JDialog {
     private void connectToDatabase() {
         try {
             // Replace below with your MySQL connection details
-            String url = "jdbc:mysql://localhost:3306/kulaabhooshanam";
+            String url = "jdbc:mysql://localhost:3306/kulaabhooshanam_java";
             String user = "root";
-            String password = "w1o2rk";
+            String password = "Harry@123";
 
             connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException ex) {
